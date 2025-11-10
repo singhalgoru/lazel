@@ -55,7 +55,7 @@
   font-size: 2rem;
   font-weight: bold;
   color: #e91e63;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
 }
 
 .brand-pillars-content p {
@@ -102,7 +102,7 @@
 }
 
 .brand-pillars > ul > li:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 16px rgb(0 0 0 / 10%);
 }
 
 .brand-pillars .cards-card-body {
@@ -123,13 +123,13 @@
   font-size: 0.85rem;
 }
 
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .brand-pillars > ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .brand-pillars-header {
     flex-direction: column;
     gap: 20px;

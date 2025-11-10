@@ -16,7 +16,7 @@ export default function decorate(block) {
   // Process each row
   rows.forEach((row) => {
     const cols = [...row.children];
-    
+
     if (cols.length >= 2) {
       // Two column layout - text and media
       const textCol = cols[0];
@@ -132,7 +132,7 @@ export default function decorate(block) {
       }
     });
   }, {
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   observer.observe(block);

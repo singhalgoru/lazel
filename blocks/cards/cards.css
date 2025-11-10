@@ -25,3 +25,123 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* Brand Pillars Section styling */
+.brand-pillars-section {
+  border: 2px dashed #00bcd4;
+  margin: 40px 0;
+}
+
+.brand-pillars-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* Brand Pillars Header styling */
+.brand-pillars-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  gap: 40px;
+}
+
+.brand-pillars-content {
+  flex: 1;
+}
+
+.brand-pillars-content h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e91e63;
+  margin: 0 0 16px 0;
+}
+
+.brand-pillars-content p {
+  color: #333;
+  line-height: 1.6;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.brand-pillars-button {
+  flex-shrink: 0;
+}
+
+.brand-pillars-button .button.primary {
+  background-color: #e91e63;
+  border-color: #e91e63;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
+}
+
+.brand-pillars-button .button.primary:hover {
+  background-color: #c2185b;
+  border-color: #c2185b;
+}
+
+/* Brand Pillars Cards styling */
+.brand-pillars > ul {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: none;
+}
+
+.brand-pillars > ul > li {
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.brand-pillars > ul > li:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.brand-pillars .cards-card-body {
+  padding: 16px;
+}
+
+.brand-pillars .cards-card-body p:first-child {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.brand-pillars .cards-card-body p:last-child {
+  color: #333;
+  font-weight: 600;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1024px) {
+  .brand-pillars > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-pillars-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .brand-pillars-content h2 {
+    font-size: 1.75rem;
+  }
+  
+  .brand-pillars > ul {
+    grid-template-columns: 1fr;
+  }
+}

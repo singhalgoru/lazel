@@ -123,13 +123,13 @@
   font-size: 0.85rem;
 }
 
-@media (width <= 1024px) {
+@media (1024px >= width) {
   .brand-pillars > ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (width <= 768px) {
+@media (768px >= width) {
   .brand-pillars-header {
     flex-direction: column;
     gap: 20px;

@@ -4,7 +4,7 @@ export default function decorate(block) {
 
   // Get all the content from the block
   const rows = [...block.children];
-  
+
   // Create text content container
   const heroText = document.createElement('div');
   heroText.className = 'hero-text';
@@ -14,7 +14,7 @@ export default function decorate(block) {
   heroMedia.className = 'hero-media';
 
   // Process each row
-  rows.forEach((row, index) => {
+  rows.forEach((row) => {
     const cols = [...row.children];
     
     if (cols.length >= 2) {
@@ -43,7 +43,7 @@ export default function decorate(block) {
               // Convert to button container
               const buttonContainer = document.createElement('div');
               buttonContainer.className = 'hero-buttons';
-              
+
               links.forEach((link, linkIndex) => {
                 const button = document.createElement('a');
                 button.href = link.href;
@@ -51,12 +51,12 @@ export default function decorate(block) {
                 button.className = linkIndex === 0 ? 'button primary' : 'button';
                 buttonContainer.appendChild(button);
               });
-              
+
               heroText.appendChild(buttonContainer);
               return;
             }
           }
-          
+
           heroText.appendChild(element.cloneNode(true));
         });
       }
@@ -83,7 +83,7 @@ export default function decorate(block) {
       // Single column - add to text content
       const textCol = cols[0];
       const textElements = [...textCol.children];
-      
+
       textElements.forEach((element) => {
         if (element.tagName === 'P') {
           const links = element.querySelectorAll('a');
@@ -98,12 +98,12 @@ export default function decorate(block) {
               button.className = linkIndex === 0 ? 'button primary' : 'button';
               buttonContainer.appendChild(button);
             });
-            
+
             heroText.appendChild(buttonContainer);
             return;
           }
         }
-        
+
         heroText.appendChild(element.cloneNode(true));
       });
     }
@@ -118,9 +118,9 @@ export default function decorate(block) {
   // Add click handlers for buttons
   const buttons = block.querySelectorAll('.button');
   buttons.forEach((button) => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', () => {
       // Add any custom button click logic here
-      console.log('Hero button clicked:', button.textContent);
+      // Button click handled
     });
   });
 

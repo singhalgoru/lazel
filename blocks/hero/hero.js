@@ -89,8 +89,7 @@ export default function decorate(block) {
           const links = element.querySelectorAll('a');
           if (links.length > 0) {
             const buttonContainer = document.createElement('div');
-            buttonContainer.className = 'hero-buttons';
-            
+            buttonContainer.className = 'hero-buttons';  
             links.forEach((link, linkIndex) => {
               const button = document.createElement('a');
               button.href = link.href;

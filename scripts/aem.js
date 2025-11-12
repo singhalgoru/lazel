@@ -144,16 +144,21 @@ function setup() {
   window.hlx = window.hlx || {};
   window.hlx.RUM_MASK_URL = 'full';
   window.hlx.RUM_MANUAL_ENHANCE = true;
-  window.hlx.codeBasePath = '';
+  window.hlx.codeBasePath = '.';
   window.hlx.lighthouse = new URLSearchParams(window.location.search).get('lighthouse') === 'on';
 
-  const scriptEl = document.querySelector('script[src$="/scripts/scripts.js"]');
+  const scriptEl = document.querySelector('script[src$="scripts/scripts.js"]');
   if (scriptEl) {
     try {
-      [window.hlx.codeBasePath] = new URL(scriptEl.src).pathname.split('/scripts/scripts.js');
+      const scriptPath = new URL(scriptEl.src).pathname;
+      window.hlx.codeBasePath = scriptPath.substring(0, scriptPath.lastIndexOf('/scripts/scripts.js'));
+      if (window.hlx.codeBasePath === '') {
+        window.hlx.codeBasePath = '.';
+      }
+      console.log('Code base path:', window.hlx.codeBasePath);
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.log(error);
+      console.log('Error setting codeBasePath:', error);
     }
   }
 }
@@ -551,13 +556,18 @@ async function loadBlock(block) {
     block.dataset.blockStatus = 'loading';
     const { blockName } = block.dataset;
     try {
-      const cssLoaded = loadCSS(`${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.css`);
+      // Use relative paths for local development
+      const cssPath = `./blocks/${blockName}/${blockName}.css`;
+      const jsPath = `./blocks/${blockName}/${blockName}.js`;
+      
+      console.log(`Loading CSS from: ${cssPath}`);
+      console.log(`Loading JS from: ${jsPath}`);
+      
+      const cssLoaded = loadCSS(cssPath);
       const decorationComplete = new Promise((resolve) => {
         (async () => {
           try {
-            const mod = await import(
-              `${window.hlx.codeBasePath}/blocks/${blockName}/${blockName}.js`
-            );
+            const mod = await import(jsPath);
             if (mod.default) {
               await mod.default(block);
             }
